@@ -11,13 +11,13 @@ services:
       - "8085:5173"
   node-demons:
     build:
-      context: ./webpack-demos
+      context: ./webpack
       dockerfile: Dockerfile-demons
     tty: true
     stdin_open: true
     working_dir: /app
     volumes:
-      - ./webpack-demos:/app
+      - ./webpack:/app
     ports:
       - "8086:8080"    
   scss:
