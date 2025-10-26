@@ -1,5 +1,7 @@
 $background: darkkhaki;
+$primary-color: brown;
 
-.fondo{
+#root{
   background-color: $background;
+  color: $primary-color;
 }

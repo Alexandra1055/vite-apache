@@ -22,13 +22,13 @@ services:
       - "8086:8080"    
   scss:
     build:
-      context: .
+      context: ./vite/vite-project/scss
       dockerfile: Dockerfile-scss
     tty: true
     stdin_open: true 
     working_dir: /app
     volumes:
-      - .:/app
+      - ./vite/vite-project/scss:/app
       
   apache:
     image: httpd
