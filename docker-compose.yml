@@ -1,0 +1,43 @@
+name: "diw-ut1"
+services:
+  node-diw:
+    image: node:22.12
+    tty: true
+    stdin_open: true
+    working_dir: /appdiw
+    volumes:
+      - ./vite:/appdiw
+    ports:
+      - "8085:5173"
+  node-demons:
+    build:
+      context: ./webpack-demos
+      dockerfile: Dockerfile-demons
+    tty: true
+    stdin_open: true
+    working_dir: /app
+    volumes:
+      - ./webpack-demos:/app
+    ports:
+      - "8086:8080"    
+  scss:
+    build:
+      context: .
+      dockerfile: Dockerfile-scss
+    tty: true
+    stdin_open: true 
+    working_dir: /app
+    volumes:
+      - .:/app
+      
+  apache:
+    image: httpd
+    tty: true
+    stdin_open: true
+    working_dir: /usr/local/apache2/htdocs/
+    volumes:
+      - .:/usr/local/apache2/htdocs/
+    ports:
+      - "85:80"
+
+      
